@@ -6,6 +6,8 @@ Hello this is a test!!!
 
 This is another test...
 
+final one
+
 1. Plays a text-based video output inside your terminal.
 2. Saves the ASCII frames as a rendered `.mp4` file in the `output` directory.
 
