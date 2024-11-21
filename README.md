@@ -11,9 +11,9 @@
 ## Requirements
 
 - GNU `make`
-- OpenCV4 (`libopencv-dev` in Ubuntu, `opencv` in Fedora and Arch)
+- OpenCV2 (`libopencv-dev` in Ubuntu, `opencv` in Fedora and Arch)
 - g++ compiler (for C++ engine)
-- vtk, glew, fmt (if not installed already)
+- Python3 (for Python engine)
 
 ## Setup (UNIX systems)
 
@@ -28,6 +28,14 @@
 
 ```bash
   chmod +x play.sh
+```
+
+3. Intall the required packages:
+
+```bash
+   # Ubuntu
+   sudo apt-get install libopencv-dev
+   pip install -r requirements.txt
 ```
 
 3. **(Optional)** Add your desired video file to the `videos` directory, or use the provided `SampleVideo.mp4`.
