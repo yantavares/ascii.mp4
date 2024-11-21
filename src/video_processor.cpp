@@ -133,7 +133,10 @@ void process_frame_worker(const std::map<char, cv::Mat> &font_images, int font_s
 
                 auto [best_match_char, best_match_img] = compare_matrices(segment, font_images);
                 cv::Mat destination = output_image(cv::Rect(i, j, font_size, font_size));
-                best_match_img.copyTo(destination);
+                cv::Mat inverted_match_img;
+                cv::bitwise_not(best_match_img, inverted_match_img);
+                inverted_match_img.copyTo(destination);
+
                 row_chars += best_match_char;
             }
             characters_grid.push_back(row_chars);
