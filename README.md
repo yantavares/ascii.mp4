@@ -1,4 +1,4 @@
-# video.txt
+# calabreso.txt
 
 **video.txt** is a project that takes a video as input, converts each frame into ASCII art using any font you want, and offers two output modes:
 
