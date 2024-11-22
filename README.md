@@ -1,6 +1,9 @@
 # calabreso.txt
 
-**video.txt** is a project that takes a video as input, converts each frame into ASCII art using any font you want, and offers two output modes:
+** Oi TikTok! To preparando executáveis pro projeto rodar direto (sem qualquer configuração necessária) tanto no Windows como no Linux. Vou deixar o vídeo do Calabreso por padrão também! **
+** Obrigado pelo suporte e pelas :star: **
+
+This is a project that takes a video as input, converts each frame into ASCII art using any font you want, and offers two output modes:
 
 1. Plays a text-based video output inside your terminal.
 2. Saves the ASCII frames as a rendered `.mp4` file in the `output` directory.
