@@ -2,8 +2,6 @@
 
 **Obrigado pelo suporte e pelas :star:**
 
-**Ah, vou traduzir tudo pra pt/BR também :)** :brazil:
-
 # calabreso.txt
 
 Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quadro em texto usando qualquer fonte que você quiser. Ele oferece dois modos de saída:
