@@ -1,8 +1,8 @@
-# calabreso.txt
-
 ## **Oi TikTok! Estou preparando executáveis pro projeto rodar direto (sem qualquer configuração necessária) tanto no Windows quanto no Linux. Vou deixar o vídeo do Calabreso por padrão também!**
 
 **Obrigado pelo suporte e pelas :star:**
+
+# calabreso.txt
 
 This is a project that takes a video as input, converts each frame into ASCII art using any font you want, and offers two output modes:
 
