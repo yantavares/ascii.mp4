@@ -6,110 +6,126 @@
 
 # calabreso.txt
 
-This is a project that takes a video as input, converts each frame into ASCII art using any font you want, and offers two output modes:
+Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quadro em texto usando qualquer fonte que você quiser. Ele oferece dois modos de saída:
 
-1. Plays a text-based video output inside your terminal.
-2. Saves the ASCII frames as a rendered `.mp4` file in the `output` directory.
+1. Reproduz o vídeo em formato de texto diretamente no terminal.
+2. Salva os quadros em ASCII como um arquivo `.mp4` renderizado na pasta `output`.
 
-**Example** (takes a few seconds to load):
-![Video Example](public/sampletxt.gif)
+**Exemplo** (leva alguns segundos para carregar):
+![Exemplo de Vídeo](public/sampletxt.gif)
 
-## Requirements
+---
 
-- GNU `make`
-- OpenCV2 (`libopencv-dev` in Ubuntu, `opencv` in Fedora and Arch)
-- g++ compiler (for C++ engine)
-- Python3 (for Python engine)
+## Requisitos
 
-## Setup (UNIX systems)
+- `make` (GNU)
+- OpenCV2 (pode instalar com `libopencv-dev` no Ubuntu ou `opencv` no Fedora e Arch)
+- Compilador g++ (para o motor em C++)
+- Python3 (para o motor em Python)
 
-1. Clone the repository:
+---
+
+## Configuração (sistemas UNIX)
+
+1. Clone o repositório:
 
 ```bash
   git clone https://github.com/yantavares/video.txt.git
   cd video.txt
 ```
 
-2. If necessary, make `play.sh` executable:
+2. Se precisar, torne o arquivo `play.sh` executável:
 
 ```bash
   chmod +x play.sh
 ```
 
-3. Intall the required packages:
+3. Instale os pacotes necessários:
 
 ```bash
-   # Ubuntu
+   # Para Ubuntu
    sudo apt-get install libopencv-dev
    pip install -r requirements.txt
 ```
 
-3. **(Optional)** Add your desired video file to the `videos` directory, or use the provided `SampleVideo.mp4`.
+4. **(Opcional)** Adicione seu arquivo de vídeo na pasta `videos`, ou use o `SampleVideo.mp4` já fornecido.
 
-4. **(Optional)** Add your desired font (.ttf files) to the `fonts` directory, or use the provided `ComicMono.ttf`.
+5. **(Opcional)** Coloque sua fonte preferida (.ttf) na pasta `fonts`, ou use a fonte padrão `ComicMono.ttf`.
 
-## **Running the Project**
+---
 
-To run the project, use the `make` command:
+## Como rodar o projeto
+
+Para rodar o projeto, use o comando `make`:
 
 ```bash
    make
 ```
 
-You will be prompted to choose between two modes:
+Você vai escolher entre dois modos de execução:
 
-1. **Play in Terminal**: Displays the ASCII-art-based video inside your terminal.
-2. **Save as MP4**: Generates a `.mp4` file in the `output` directory, rendering the ASCII-art-based video.
+1. **Reproduzir no terminal**: Mostra o vídeo em ASCII direto no seu terminal.
+2. **Salvar como MP4**: Gera um `.mp4` renderizado na pasta `output`.
 
-After selecting your mode, follow the steps below.
+Depois de escolher o modo, siga os passos descritos abaixo.
 
-### Steps After Running `make`:
+---
 
-1. **Select Font**:
-   - Default is `Comic Mono`.
-2. **Choose Font Size**:
-   - **Must match the terminal font size**.
-   - Choose a font size between 2 and 20.
-   - Default is 11.
-3. **Provide Video Filename**:
-   - You will be prompted to choose a video file from the `videos` directory.
-   - Default is `SampleVideo.mp4`.
-4. **Choose Mode**:
-   - Select one of the following:
-     - **1**: Play the video in the terminal.
-     - **2**: Save the ASCII-rendered video as an `.mp4` file in the `output` directory.
+### Passos após rodar o `make`:
 
-If no input is provided during any prompt, the default values will be used.
+1. **Selecionar a fonte**:
+   - A padrão é `Comic Mono`.
+2. **Escolher o tamanho da fonte**:
+   - **Deve ser compatível com o tamanho da fonte do terminal**.
+   - Escolha entre 2 e 20.
+   - O padrão é 11.
+3. **Informar o nome do vídeo**:
+   - Escolha um vídeo da pasta `videos`.
+   - O padrão é `SampleVideo.mp4`.
+4. **Selecionar o modo**:
+   - Escolha uma das opções:
+     - **1**: Reproduzir no terminal.
+     - **2**: Salvar como `.mp4` na pasta `output`.
 
-### Commands
+Se você não responder algum dos prompts, os valores padrão serão usados.
 
-- To **play the video in your terminal** after running `make`:
+---
+
+### Comandos
+
+- Para **reproduzir o vídeo no terminal** após rodar `make`:
 
 ```bash
    make play
 ```
 
-The video will automatically resize to fit your terminal dimensions.
+O vídeo será redimensionado automaticamente para caber na janela do terminal.
 
-- To **save the ASCII-rendered video as an MP4**:
+- Para **salvar o vídeo renderizado em ASCII como um MP4**:
 
 ```bash
    make
 ```
 
-Choose mode `2` when prompted, and the `.mp4` file will be saved in the `output` directory.
+Escolha o modo `2` quando solicitado, e o arquivo será salvo como `output/text.mp4`.
 
-### Outputs
+---
 
-1. If you select **Mode 1**, the ASCII video will play directly in your terminal.
-2. If you select **Mode 2**, the ASCII-rendered frames will be compiled into a `.mp4` file, saved as `output/text.mp4`.
+### Saídas
 
-Additionally, all individual ASCII frames are saved as `.txt` files in the `output` directory.
+1. Se você escolher o **Modo 1**, o vídeo será exibido diretamente no terminal.
+2. Se você escolher o **Modo 2**, o vídeo renderizado em ASCII será salvo como `.mp4` na pasta `output`.
 
-## License
+Além disso, todos os quadros individuais do vídeo em ASCII serão salvos como arquivos `.txt` na pasta `output`.
 
-This project is licensed under the MIT License.
+---
 
-## Contributing
+## Licença
 
-Contributions are welcome! Please open an issue or a pull request for any changes or improvements.
+Esse projeto está sob a licença MIT.
+
+---
+
+## Contribuições
+
+Contribuições são super bem-vindas! Abra uma issue ou envie um pull request para qualquer melhoria ou sugestão. 😄
