@@ -1,6 +1,6 @@
 ## **Oi TikTok! Estou preparando executáveis pro projeto rodar direto (sem qualquer configuração necessária) tanto no Windows quanto no Linux. Vou deixar o vídeo do Calabreso por padrão também!**
 
-**Obrigado pelo suporte e pelas :star:**
+**Obrigado pelo suporte 🌠:**
 
 # calabreso.txt
 
