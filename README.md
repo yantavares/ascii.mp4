@@ -2,6 +2,8 @@
 
 **Obrigado pelo suporte e pelas :star:**
 
+**Ah, vou traduzir tudo pra pt/BR também :)** :brazil:
+
 # calabreso.txt
 
 This is a project that takes a video as input, converts each frame into ASCII art using any font you want, and offers two output modes:
