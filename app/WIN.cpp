@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        std::cerr << "Uso: " << argv[0] << " <Caminho_do_arquivo>" << std::endl;
+        std::cerr << "Uso: " << argv[0] << " <caminho_do_arquivo>" << std::endl;
         return 1;
     }
 
@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     cv::VideoCapture cap(video_path);
     if (!cap.isOpened())
     {
-        std::cerr << "Error opening video file: " << video_path << std::endl;
+        std::cerr << "Erro ao abrir arquivo: " << video_path << std::endl;
         return -1;
     }
 
@@ -90,8 +90,8 @@ int main(int argc, char *argv[])
     }
 
     cap.release();
-    std::cout << "----------------------------------------" << std::endl;
-    std::cout << "Video playback completed." << std::endl;
+    std::cout << "----------------" << std::endl;
+    std::cout << "Video concluido." << std::endl;
 
     return 0;
 }
