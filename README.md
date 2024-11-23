@@ -93,21 +93,19 @@ Se você não responder algum dos prompts, os valores padrão serão usados.
 
 ### Comandos
 
-- Para **reproduzir o vídeo no terminal** após rodar `make`:
-
-```bash
-   make play
-```
-
-O vídeo será redimensionado automaticamente para caber na janela do terminal.
-
-- Para **salvar o vídeo renderizado em ASCII como um MP4**:
+- Para **rodar no terminal ou gerar mp4 ASCII**:
 
 ```bash
    make
 ```
 
-Escolha o modo `2` quando solicitado, e o arquivo será salvo como `output/text.mp4`.
+Aviso: O vídeo será redimensionado automaticamente para caber na janela do terminal, não use uma janela muito pequena.
+
+- Para **reproduzir o vídeo no terminal** após rodar `make`:
+
+```bash
+   make play
+```
 
 ---
 
