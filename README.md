@@ -1,6 +1,4 @@
-**Oi TikTok! Estou preparando executáveis pro projeto rodar direto (sem qualquer configuração necessária) tanto no Windows quanto no Linux. Vou deixar o vídeo do Calabreso por padrão também!**
-
-Enquanto isso, as instruções pra rodar estão logo abaixo (só funciona no Linux)
+**Executáveis (sem configuração para execução) estão disponíveis! Veja o [README.md](app/README.md) para mais informações.**
 
 **Obrigado pelo suporte 🌠:**
 
@@ -30,8 +28,8 @@ Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quad
 1. Clone o repositório:
 
 ```bash
-  git clone https://github.com/yantavares/video.txt.git
-  cd video.txt
+  git clone https://github.com/yantavares/calabreso.txt.git
+  cd calabreso.txt
 ```
 
 2. Se precisar, torne o arquivo `play.sh` executável:
