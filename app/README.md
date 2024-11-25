@@ -57,6 +57,8 @@ Execute o comando desejado para iniciar o player:
    ./Linux <caminho_para_o_video>
    ```
 
+O vídeo será ajustado automaticamente ao tamanho do terminal e reproduzido diretamente como um player de vídeo ASCII.  
+
 Se preciso, dê permissão de execução ao arquivo:  
 
    ```bash
@@ -65,7 +67,6 @@ Se preciso, dê permissão de execução ao arquivo:
    chmod +x Linux
    ```
 
-O vídeo será ajustado automaticamente ao tamanho do terminal e reproduzido diretamente como um player de vídeo ASCII.  
 
 ---
 
