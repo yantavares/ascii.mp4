@@ -166,8 +166,8 @@ std::pair<int, int> get_terminal_size()
     {
         if (w.ws_col < 80 || w.ws_row < 20)
         {
-            std::cerr << "Warning: Terminal size (" << w.ws_col << "x" << w.ws_row << ") is too small for optimal display. Consider resizing." << std::endl;
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+            std::cerr << "\n!!!   Warning: Terminal size (" << w.ws_col << "x" << w.ws_row << ") is too small for optimal display. Consider resizing. !!!" << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(4));
         }
         return {w.ws_col, w.ws_row};
     }
@@ -178,11 +178,9 @@ std::pair<int, int> get_terminal_size()
     }
 }
 
-void process_frame(const cv::Mat &frame, int count, const std::map<char, cv::Mat> &font_images, int font_size, const std::string &output_txt_dir)
+void process_frame(const cv::Mat &frame, int count, const std::map<char, cv::Mat> &font_images, int font_size, const std::string &output_txt_dir, const int terminal_height, const int terminal_width)
 {
     cv::Mat gray_frame;
-
-    auto [terminal_width, terminal_height] = get_terminal_size();
     cv::Mat resized_frame;
 
     cv::resize(frame, resized_frame, cv::Size(terminal_width * font_size, terminal_height * font_size));
@@ -269,6 +267,8 @@ int main(int argc, char *argv[])
     cv::Mat frame;
     int count = 0;
 
+    auto [terminal_width, terminal_height] = get_terminal_size();
+
     while (cap.read(frame))
     {
         cv::Mat frame_copy = frame.clone();
@@ -280,7 +280,7 @@ int main(int argc, char *argv[])
                 std::lock_guard<std::mutex> guard(io_mutex);
                 std::cout << "Processing frame " << current_count << std::endl;
             }
-            process_frame(frame_copy, current_count, std::ref(font_images), font_size, output_txt_dir);
+            process_frame(frame_copy, current_count, std::ref(font_images), font_size, output_txt_dir, terminal_height, terminal_width);
             completed_tasks.fetch_add(1, std::memory_order_relaxed); });
     }
 
