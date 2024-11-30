@@ -65,8 +65,6 @@ Você vai escolher entre dois modos de execução:
 1. **Reproduzir no terminal**: Mostra o vídeo em ASCII direto no seu terminal.
 2. **Salvar como MP4**: Gera um `.mp4` renderizado na pasta `output`.
 
-Depois de escolher o modo, siga os passos descritos abaixo.
-
 ---
 
 ### Passos após rodar o `make`:
@@ -99,7 +97,7 @@ Se você não responder algum dos prompts, os valores padrão serão usados.
 
 Aviso: O vídeo será redimensionado automaticamente para caber na janela do terminal, não use uma janela muito pequena.
 
-- Para **reproduzir o vídeo no terminal** após rodar `make`:
+- Para **reproduzir o vídeo no terminal** após rodar `make` (sem qualquer processamento adicional):
 
 ```bash
    make play
