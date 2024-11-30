@@ -1,10 +1,12 @@
 ℹ️ Versão em Português: [README](README.md)
 
-calabreso.txt
+# calabreso.txt
 
-Executables (no setup required) are available! See the README.md or the Releases tab of the repository for more information.
+**Executables (no setup required) are available! See the README.md or the Releases tab of the repository for more information.**
 
 Thank you for your support 🌠:
+
+--
 
 This is a project that transforms a video into ASCII art, converting each frame into text using any font you want. It offers two output modes:
 	1.	Plays the video in text format directly in the terminal.
