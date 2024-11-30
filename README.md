@@ -95,7 +95,7 @@ Se você não responder algum dos prompts, os valores padrão serão usados.
    make
 ```
 
-Aviso: O vídeo será redimensionado automaticamente para caber na janela do terminal, não use uma janela muito pequena.
+**Aviso**: O vídeo será redimensionado automaticamente para caber na janela do terminal, não use uma janela muito pequena.
 
 - Para **reproduzir o vídeo no terminal** após rodar `make` (sem qualquer processamento adicional):
 
