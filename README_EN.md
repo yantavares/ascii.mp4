@@ -2,7 +2,7 @@
 
 # calabreso.txt
 
-**Executables (no setup required) are available! See the README.md or the Releases tab of the repository for more information.**
+**Executables (no setup required) are available! See the [README](app/README_EN) or the Releases tab of the repository for more information.**
 
 Thank you for your support 🌠:
 
