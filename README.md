@@ -1,4 +1,4 @@
-:information: English Version: [README_EN](README_EN.md)
+ℹ️ English Version: [README_EN](README_EN.md)
 
 # calabreso.txt
 
