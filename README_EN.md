@@ -6,7 +6,7 @@
 
 Thank you for your support 🌠:
 
---
+---
 
 This is a project that transforms a video into ASCII art, converting each frame into text using any font you want. It offers two output modes:
 	1.	Plays the video in text format directly in the terminal.
