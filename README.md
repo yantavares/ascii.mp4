@@ -1,8 +1,12 @@
+:info: English Version: [README_EN](README_EN.md)
+
+# calabreso.txt
+
 **Executáveis (sem configuração para execução) estão disponíveis! Veja o [README.md](app/README.md) ou a aba de `Releases` do repositório para mais informações.**
 
 **Obrigado pelo suporte 🌠:**
 
-# calabreso.txt
+---
 
 Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quadro em texto usando qualquer fonte que você quiser. Ele oferece dois modos de saída:
 
