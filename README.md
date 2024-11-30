@@ -2,7 +2,7 @@
 
 # calabreso.txt
 
-**Executáveis (sem configuração para execução) estão disponíveis! Veja o [README.md](app/README.md) ou a aba de `Releases` do repositório para mais informações.**
+**Executáveis (sem configuração para execução) estão disponíveis! Veja o [README](app/README.md) ou a aba de `Releases` do repositório para mais informações.**
 
 **Obrigado pelo suporte 🌠:**
 
