@@ -2,6 +2,8 @@
 
 This repository contains two versions of executables to run the **calabreso.txt** project without requiring additional setup.
 
+**Note:** To ensure simplicity and real-time execution, the executables operate in an optimized way that differs from the original project. See the [Notes](#notes) section for details. 
+
 ---
 
 ## Available Executables  
