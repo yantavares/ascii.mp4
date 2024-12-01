@@ -2,10 +2,6 @@
 
 Este repositório contém duas versões de executáveis para rodar o projeto **calabreso.txt** sem necessidade de configuração adicional.
 
-⚠️ Este modo de execução utiliza uma técnica baseada em brightness para determinar os caracteres do vídeo em tempo real, o que pode resultar em uma resolução menor comparada ao modo completo disponível no projeto original.
-
-**Para a versão completa, siga os passos do [README](../README.md).**
-
 ---
 
 ## Executáveis Disponíveis  
@@ -83,7 +79,7 @@ Se preciso, dê permissão de execução ao arquivo:
 
 ## Observações  
 
-Este modo de execução utiliza uma técnica baseada em **brightness** para determinar os caracteres do vídeo, o que pode resultar em uma resolução menor comparada ao modo completo disponível no projeto original.  
+⚠️ **Este modo de execução utiliza uma técnica baseada em **brightness** para determinar os caracteres do vídeo, o que pode resultar em uma resolução menor comparada ao modo completo disponível no projeto original.**
 
 Para experimentar a versão completa, que permite configurações detalhadas e melhores resultados visuais, consulte o README original [aqui](../README.md).
 
