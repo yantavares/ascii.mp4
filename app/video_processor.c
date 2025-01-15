@@ -56,8 +56,11 @@ void get_terminal_size(int *cols, int *rows)
     }
 }
 
-void detect_motion_and_display(const uint8_t *prev_frame, const uint8_t *current_frame, int width, int height, int linesize, int threshold)
+void detect_motion_and_display(const uint8_t *prev_frame, const uint8_t *current_frame, int width, int height, int linesize, int threshold, int debug_mode)
 {
+    if (debug_mode)
+        return;
+
     for (int y = 0; y < height; y++)
     {
         for (int x = 0; x < width; x++)
@@ -81,11 +84,12 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        fprintf(stderr, "Uso: %s <caminho_do_arquivo>\n", argv[0]);
+        fprintf(stderr, "Uso: %s <caminho_do_arquivo> [--debug]\n", argv[0]);
         return 1;
     }
 
     const char *video_path = argv[1];
+    int debug_mode = (argc > 2 && strcmp(argv[2], "--debug") == 0);
 
     AVFormatContext *format_ctx = NULL;
     if (avformat_open_input(&format_ctx, video_path, NULL, NULL) != 0)
@@ -173,6 +177,8 @@ int main(int argc, char *argv[])
     av_image_fill_arrays(frame_gray->data, frame_gray->linesize, buffer, AV_PIX_FMT_GRAY8, output_width, output_height, 1);
 
     AVPacket packet;
+    clock_t start_time = clock();
+
     while (av_read_frame(format_ctx, &packet) >= 0)
     {
         if (packet.stream_index == video_stream_index)
@@ -183,18 +189,32 @@ int main(int argc, char *argv[])
                 {
                     sws_scale(sws_ctx, (const uint8_t *const *)frame->data, frame->linesize, 0, codec_ctx->height, frame_gray->data, frame_gray->linesize);
 
-                    clear_screen();
+                    if (!debug_mode)
+                    {
+                        clear_screen();
+                    }
 
                     apply_blur(frame_gray->data[0], output_width, output_height, frame_gray->linesize[0]);
-                    detect_motion_and_display(prev_frame, frame_gray->data[0], output_width, output_height, frame_gray->linesize[0], 20);
+                    detect_motion_and_display(prev_frame, frame_gray->data[0], output_width, output_height, frame_gray->linesize[0], 20, debug_mode);
 
                     memcpy(prev_frame, frame_gray->data[0], output_width * output_height);
 
-                    usleep(1000000 / codec_ctx->framerate.num);
+                    if (!debug_mode)
+                    {
+                        usleep(1000000 / codec_ctx->framerate.num);
+                    }
                 }
             }
         }
         av_packet_unref(&packet);
+    }
+
+    clock_t end_time = clock();
+
+    if (debug_mode)
+    {
+        double duration = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+        printf("Tempo total de execução: %.2f segundos\n", duration);
     }
 
     free(prev_frame);
@@ -205,8 +225,11 @@ int main(int argc, char *argv[])
     avcodec_free_context(&codec_ctx);
     avformat_close_input(&format_ctx);
 
-    printf("----------------\n");
-    printf("Vídeo concluído.\n");
+    if (!debug_mode)
+    {
+        printf("----------------\n");
+        printf("Vídeo concluído.\n");
+    }
 
     return 0;
 }
