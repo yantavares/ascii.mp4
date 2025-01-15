@@ -19,6 +19,23 @@ char brightness_to_ascii(unsigned char brightness)
     return ASCII_CHARS[index];
 }
 
+void apply_blur(uint8_t *frame, int width, int height, int linesize)
+{
+    for (int y = 1; y < height - 1; y++)
+    {
+        for (int x = 1; x < width - 1; x++)
+        {
+            int idx = y * linesize + x;
+            frame[idx] = (frame[idx] +
+                          frame[idx - 1] +
+                          frame[idx + 1] +
+                          frame[idx - linesize] +
+                          frame[idx + linesize]) /
+                         5;
+        }
+    }
+}
+
 void clear_screen()
 {
     printf("\033[H\033[J");
@@ -169,6 +186,7 @@ int main(int argc, char *argv[])
 
                     clear_screen();
 
+                    apply_blur(frame_gray->data[0], output_width, output_height, frame_gray->linesize[0]);
                     detect_motion_and_display(prev_frame, frame_gray->data[0], output_width, output_height, frame_gray->linesize[0], 20);
 
                     memcpy(prev_frame, frame_gray->data[0], output_width * output_height);
