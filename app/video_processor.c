@@ -8,9 +8,10 @@
 #include <libswscale/swscale.h>
 #include <libavutil/imgutils.h>
 #include <time.h>
+#include <math.h>
 
 // Caracteres usados no vídeo
-const char *ASCII_CHARS = "@#W$21abc?!;:+=-,._ ";
+const char *ASCII_CHARS = "@#W$21abc?!;:+=-,. ";
 
 char brightness_to_ascii(unsigned char brightness)
 {
@@ -36,6 +37,27 @@ void get_terminal_size(int *cols, int *rows)
         fprintf(stderr, "Unable to detect terminal size. Defaulting to 80x24.\n");
         *cols = 80;
         *rows = 24;
+    }
+}
+
+void detect_motion_and_display(const uint8_t *prev_frame, const uint8_t *current_frame, int width, int height, int linesize, int threshold)
+{
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            int current_index = y * linesize + x;
+            int diff = abs(current_frame[current_index] - prev_frame[current_index]);
+            if (diff > threshold)
+            {
+                printf("\033[48;2;%d;0;0m%c", diff, brightness_to_ascii(current_frame[current_index]));
+            }
+            else
+            {
+                printf("\033[48;2;0;0;0m%c", brightness_to_ascii(current_frame[current_index]));
+            }
+        }
+        printf("\033[0m\n");
     }
 }
 
@@ -127,6 +149,9 @@ int main(int argc, char *argv[])
 
     AVFrame *frame = av_frame_alloc();
     AVFrame *frame_gray = av_frame_alloc();
+    uint8_t *prev_frame = (uint8_t *)malloc(output_width * output_height);
+    memset(prev_frame, 0, output_width * output_height);
+
     int buffer_size = av_image_get_buffer_size(AV_PIX_FMT_GRAY8, output_width, output_height, 1);
     uint8_t *buffer = (uint8_t *)av_malloc(buffer_size);
     av_image_fill_arrays(frame_gray->data, frame_gray->linesize, buffer, AV_PIX_FMT_GRAY8, output_width, output_height, 1);
@@ -144,15 +169,9 @@ int main(int argc, char *argv[])
 
                     clear_screen();
 
-                    for (int y = 0; y < output_height; y++)
-                    {
-                        for (int x = 0; x < output_width; x++)
-                        {
-                            unsigned char brightness = frame_gray->data[0][y * frame_gray->linesize[0] + x];
-                            putchar(brightness_to_ascii(brightness));
-                        }
-                        putchar('\n');
-                    }
+                    detect_motion_and_display(prev_frame, frame_gray->data[0], output_width, output_height, frame_gray->linesize[0], 20);
+
+                    memcpy(prev_frame, frame_gray->data[0], output_width * output_height);
 
                     usleep(1000000 / codec_ctx->framerate.num);
                 }
@@ -161,6 +180,7 @@ int main(int argc, char *argv[])
         av_packet_unref(&packet);
     }
 
+    free(prev_frame);
     av_free(buffer);
     av_frame_free(&frame);
     av_frame_free(&frame_gray);
