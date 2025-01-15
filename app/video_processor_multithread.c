@@ -78,8 +78,21 @@ int buffer_count = 0;
 int buffer_in = 0;
 int buffer_out = 0;
 
+void sleep_ms(int milliseconds)
+{
+    struct timespec ts;
+    ts.tv_sec = milliseconds / 1000;
+    ts.tv_nsec = (milliseconds % 1000) * 1000000;
+
+    while (nanosleep(&ts, &ts) == -1)
+    {
+        continue;
+    }
+}
+
 void *blur_thread(void *arg)
 {
+    sleep_ms(1);
     ThreadArgs *args = (ThreadArgs *)arg;
     apply_blur(args->frame, args->width, args->height, args->linesize, args->start_row, args->end_row);
     return NULL;
