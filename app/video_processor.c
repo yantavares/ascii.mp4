@@ -10,7 +10,6 @@
 #include <time.h>
 #include <math.h>
 
-// Caracteres usados no vídeo
 const char *ASCII_CHARS = "@#W$21abc?!;:+=-,. ";
 
 char brightness_to_ascii(unsigned char brightness)
