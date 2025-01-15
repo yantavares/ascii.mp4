@@ -11,7 +11,7 @@
 #include <time.h>
 #include <math.h>
 
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 1
 
 const char *ASCII_CHARS = "@#W$21abc?!;:+=-,. ";
 
@@ -121,7 +121,7 @@ uint8_t *consumer()
     return frame;
 }
 
-void detect_motion_and_display(uint8_t *prev_frame, uint8_t *current_frame, int width, int height, int linesize, int threshold)
+void detect_motion_and_display(uint8_t *prev_frame, uint8_t *current_frame, int width, int height, int linesize, int threshold, int debug_mode)
 {
     for (int y = 0; y < height; y++)
     {
@@ -131,14 +131,17 @@ void detect_motion_and_display(uint8_t *prev_frame, uint8_t *current_frame, int 
             int diff = abs(current_frame[current_index] - prev_frame[current_index]);
             if (diff > threshold)
             {
-                printf("\033[48;2;%d;0;0m%c", diff, brightness_to_ascii(current_frame[current_index]));
+                if (!debug_mode)
+                    printf("\033[48;2;%d;0;0m%c", diff, brightness_to_ascii(current_frame[current_index]));
             }
             else
             {
-                printf("\033[48;2;0;0;0m%c", brightness_to_ascii(current_frame[current_index]));
+                if (!debug_mode)
+                    printf("\033[48;2;0;0;0m%c", brightness_to_ascii(current_frame[current_index]));
             }
         }
-        printf("\033[0m\n");
+        if (!debug_mode)
+            printf("\033[0m\n");
     }
 }
 
@@ -151,6 +154,7 @@ int main(int argc, char *argv[])
     }
 
     const char *video_path = argv[1];
+    int debug_mode = (argc > 2 && strcmp(argv[2], "--debug") == 0);
 
     AVFormatContext *format_ctx = NULL;
     if (avformat_open_input(&format_ctx, video_path, NULL, NULL) != 0)
@@ -238,6 +242,7 @@ int main(int argc, char *argv[])
     av_image_fill_arrays(frame_gray->data, frame_gray->linesize, buffer, AV_PIX_FMT_GRAY8, output_width, output_height, 1);
 
     AVPacket packet;
+    clock_t start_time = clock();
 
     while (av_read_frame(format_ctx, &packet) >= 0)
     {
@@ -268,15 +273,30 @@ int main(int argc, char *argv[])
 
                     uint8_t *processed_frame = consumer();
 
-                    clear_screen();
-                    detect_motion_and_display(prev_frame, processed_frame, output_width, output_height, frame_gray->linesize[0], 20);
+                    if (!debug_mode)
+                    {
+                        clear_screen();
+                    }
+                    detect_motion_and_display(prev_frame, processed_frame, output_width, output_height, frame_gray->linesize[0], 20, debug_mode);
 
                     memcpy(prev_frame, processed_frame, output_width * output_height);
-                    usleep(1000000 / codec_ctx->framerate.num);
+
+                    if (!debug_mode)
+                    {
+                        usleep(1000000 / codec_ctx->framerate.num);
+                    }
                 }
             }
         }
         av_packet_unref(&packet);
+    }
+
+    clock_t end_time = clock();
+
+    if (debug_mode)
+    {
+        double duration = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+        printf("Total execution time: %.2f seconds\n", duration);
     }
 
     free(prev_frame);
