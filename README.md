@@ -47,6 +47,11 @@ Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quad
 ```bash
    # Para Ubuntu
    sudo apt-get install libopencv-dev
+   # Para Arch
+   sudo pacman -S opencv
+   # Para Fedora/RH
+   sudo dnf install opencv
+
    pip install -r requirements.txt
 ```
 
