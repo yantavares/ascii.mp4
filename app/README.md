@@ -52,7 +52,7 @@ pacman -S opencv
 Fedora:
 
 ```bash
-dnf install opencv
+dnf install opencv-devel
 ```
 
 ---
@@ -64,7 +64,7 @@ Para executar a versão com detecção de movimento, é necessário instalar o p
 Arch:
 
 ```bash
-pacman -S ffmpeg-devel
+pacman -S ffmpeg
 ```
 
 Fedora:
