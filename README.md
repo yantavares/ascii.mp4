@@ -50,7 +50,7 @@ Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quad
    # Para Arch
    sudo pacman -S opencv
    # Para Fedora/RH
-   sudo dnf install opencv
+   sudo dnf install opencv-devel
 
    pip install -r requirements.txt
 ```
