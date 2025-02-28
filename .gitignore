@@ -8,3 +8,6 @@
 .DS_Store
 __pycache__/
 venv/
+processor
+video_processor
+video_processor_multithread
