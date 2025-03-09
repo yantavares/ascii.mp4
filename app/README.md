@@ -73,12 +73,6 @@ Fedora:
 dnf install ffmpeg-devel
 ```
 
-Para compilar o arquivo:
-
-```bash
-gcc app/LINUX_Movement.c -o Linux_Movement -I/usr/include/ffmpeg -lavformat -lavcodec -lavutil -lswscale
-```
-
 ---
 
 ## Como Usar
