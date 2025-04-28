@@ -32,8 +32,8 @@ Esse é um projeto que transforma um vídeo em arte ASCII, convertendo cada quad
 1. Clone o repositório:
 
 ```bash
-  git clone https://github.com/yantavares/calabreso.txt.git
-  cd calabreso.txt
+  git clone https://github.com/yantavares/ascii.mp4.git
+  cd ascii.mp4
 ```
 
 2. Se precisar, torne o arquivo `play.sh` executável:
